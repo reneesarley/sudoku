@@ -1,9 +1,9 @@
-// import { Entry } from './entry';
-// import './styles.css';
-// import $ from 'jquery';
-// import 'bootstrap';
-// import 'bootstrap/dist/css/bootstrap.min.css';
-//
+import { Game} from './game';
+import './styles.css';
+import $ from 'jquery';
+import 'bootstrap';
+import 'bootstrap/dist/css/bootstrap.min.css';
+
 // $(document).ready(function() {
 //   $('#new-entry').submit(function(event) {
 //     event.preventDefault();
