@@ -2,13 +2,8 @@ import {Game} from '../src/game';
 
 describe ('Game', function() {
   var newArray;
-  var failArray;
 
   beforeEach(function() {
-
-    failArray = new Game(
-      [1, 2, 8, 4, 5, 6, 7, 8, 9]);
-    failArray.arrayToCheck = [1, 2, 8, 4, 5, 6, 7, 8, 9];
 
     newArray = new Game(
 
@@ -28,8 +23,6 @@ describe ('Game', function() {
   it ('should test row contains correct numbers', function() {
     var rowResult = newArray.arrayCheck();
     expect(rowResult).toEqual(true);
-    var rowResult = failArray.arrayCheck();
-    expect(rowResult).toEqual(false);
   });
 
   it ('should push all rows to array to check', function() {

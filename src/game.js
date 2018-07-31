@@ -3,6 +3,16 @@ export function Game(mainArray) {
   this.arrayToCheck = [];
 }
 
+Game.prototype.solution = function() {
+  if (this.mainArray.includes(NaN))
+  {
+    return alert('missed something!');
+  }
+  else if (this.getAllRows() && this.getAllColumns() && this.getAllColumns())
+  {
+    return alert("darn, you're smart");
+  }
+};
 
 
 Game.prototype.arrayCheck = function () {
@@ -74,5 +84,38 @@ Game.prototype.getAllBoxes= function () {
     }
   }
   return true;
-
 };
+
+export function makeGame() {
+  while (true){
+    var array = []
+    for (var i = 0; i <= 80 ; i++ ){
+        array.push(Math.floor((Math.random() * 9) + 1));
+        console.log(array);
+    }
+      var newGame = new Game(array);
+      if (newGame.solution()){
+      return array
+      }
+    }
+  }
+
+  // export function makeGameTwo() {
+  //   while (true){
+  //     var array = []
+  //     for (var i = 0; i <= 8 ; i++ ){
+  //       var rowArray = []
+  //       var newNumber =(Math.floor((Math.random() * 9) + 1));
+  //       if(!(rowArray.inclueds(newNumber)))
+  //       {
+  //         rowArray.push(newNumber);
+  //       }
+  //         console.log(rowArray);
+  //     }
+  //       var newGame = new Game(array);
+  //       if (newGame.solution()){
+  //       return array
+  //       }
+  //     }
+  //   }
+  //
