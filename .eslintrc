@@ -18,6 +18,7 @@
       "no-debugger": "warn",
       "no-unused-vars": "warn",
       "no-constant-condition": "warn",
-      "no-cond-assign": "warn"
+      "no-cond-assign": "warn",
+      "no-extra-semi": "warn"
     }
 }
