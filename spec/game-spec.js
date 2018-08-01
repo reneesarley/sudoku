@@ -12,31 +12,37 @@ describe ('Game', function() {
                             7,9,4,6,3,2,5,8,1,
                             2,6,5,8,1,4,9,3,7,
                             3,1,8,9,5,7,4,6,2]
-     winningGame = new Game(winningSolution);
+     winningGame = new Game();
+     winningGame.usersSolution = winningSolution;
      winningGame.arrayToCheck = [1, 2, 3, 4, 5, 6, 7, 8, 9];
   });
 
-  it ('should test if set of 9 numbers contains correct numbers', function() {
+  it ('should test if set of 9 numbers contains 1-9', function() {
     var rowResult = winningGame.arrayCheck();
     console.log(winningGame.mainArray);
     expect(rowResult).toEqual(true);
   });
 
-  it ('should push all rows to array to check', function() {
+  it ('should cycle through each row until it finds a failing row', function() {
     var thisArray = winningGame.getAllRows();
     expect (thisArray).toEqual(true);
 
   });
 
-  it ('should push all cols to array to check', function() {
+  it ('should cycle through each column until it finds a failing row', function() {
     var thisArray = winningGame.getAllColumns();
     expect (thisArray).toEqual(true);
 
   });
 
-  it ('should push all boxes to array to check', function() {
+  it ('should cycle through each box until it finds a failing row', function() {
     var thisArray = winningGame.getAllBoxes();
     expect (thisArray).toEqual(true);
+
+  });
+  it ('should create an array using 1-9 with no duplicates', function() {
+    // var thisArray = winningGame.getAllBoxes();
+    // expect (thisArray).toEqual(true);
 
   });
 

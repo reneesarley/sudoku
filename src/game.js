@@ -1,6 +1,6 @@
 export class Game {
-  constructor(usersSolution) {
-    this.usersSolution= usersSolution;
+  constructor() {
+    this.usersSolution= [];
     this.arrayToCheck = []
   }
 
