@@ -10,17 +10,29 @@ export class Game {
     {
       return alert('missed something!');
     }
-    else if (this.getAllRows(solutionToCheck) && this.getAllColumns(solutionToCheck) && this.getAllBoxes())
+    else if (this.getAllRows(solutionToCheck) && this.checkAllColumns(solutionToCheck) && this.getAllBoxes())
     {
       return alert("darn, you're smart");
     }
   };
 
   arrayCheck() {
-    for (var r = 1; r < 10 ; r++){
-      if (!(this.arrayToCheck.includes(r)))
-      {
-        return false;
+    //first check if array is length of 9
+    if(this.arrayToCheck.length == 9){
+      for (var r = 1; r < 10 ; r++){
+        if (!(this.arrayToCheck.includes(r)))
+        {
+          return false;
+        }
+      }
+    }
+    else {
+      for (var n = 1; n < 10 ; n++){
+        let numberOfTimesNumberAppearsInArray= this.arrayToCheck.filter(number => number == n).length
+        if (numberOfTimesNumberAppearsInArray > 1)
+        {
+          return false;
+        }
       }
     }
     return true;
@@ -47,24 +59,25 @@ export class Game {
 
   };
 
-  getAllColumns(solutionToCheck) {
-  for (var i = 0; i < (solutionToCheck.length/9); i++){
-    this.arrayToCheck = [];
-    this.arrayToCheck.push(solutionToCheck[i]);
-    this.arrayToCheck.push(solutionToCheck[i+9]);
-    this.arrayToCheck.push(solutionToCheck[i+18]);
-    this.arrayToCheck.push(solutionToCheck[i+27]);
-    this.arrayToCheck.push(solutionToCheck[i+36]);
-    this.arrayToCheck.push(solutionToCheck[i+45]);
-    this.arrayToCheck.push(solutionToCheck[i+54]);
-    this.arrayToCheck.push(solutionToCheck[i+63]);
-    this.arrayToCheck.push(solutionToCheck[i+72]);
-    if (this.arrayCheck() == false){
-      return false;
+  checkAllColumns(solutionToCheck) {
+    console.log(`the loop should run up until it hits ${solutionToCheck.length/9}`);
+    for (var i = 0; i < (solutionToCheck.length/9); i++){
+      this.arrayToCheck = [];
+      this.arrayToCheck.push(solutionToCheck[i]);
+      this.arrayToCheck.push(solutionToCheck[i+9]);
+      this.arrayToCheck.push(solutionToCheck[i+18]);
+      this.arrayToCheck.push(solutionToCheck[i+27]);
+      this.arrayToCheck.push(solutionToCheck[i+36]);
+      this.arrayToCheck.push(solutionToCheck[i+45]);
+      this.arrayToCheck.push(solutionToCheck[i+54]);
+      this.arrayToCheck.push(solutionToCheck[i+63]);
+      this.arrayToCheck.push(solutionToCheck[i+72]);
+      if (this.arrayCheck() == false){
+        return false;
+      }
     }
-  }
-  return true;
-};
+    return true;
+  };
 
   getAllBoxes() {
     for (var i = 0; i < 62; i+=3){
@@ -100,6 +113,14 @@ export class Game {
           this.gameBoard.push(this.arrayToCheck[i]);
         }
       }
+      // let updatedGameBoardFailsColumnCheck = this.checkAllColumns(this.gameBoard)
+      // console.log(`current result of gameboard column check ${updatedGameBoardFailsColumnCheck}`);
+
+      //backtrack last added array if gameboard isn't winning
+      // if(!(updatedGameBoardFailsColumnCheck))
+      // {
+      //   this.gameBoard.splice((this.gameBoard.length-10), 9);
+      // }
     }
   }
 };
