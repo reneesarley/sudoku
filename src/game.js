@@ -1,7 +1,8 @@
 export class Game {
   constructor() {
     this.usersSolution= [];
-    this.arrayToCheck = []
+    this.arrayToCheck = [];
+    this.gameBoard = [];
   }
 
   solution() {
@@ -87,21 +88,36 @@ export class Game {
     return true;
   }
 
+  makeGameBoard() {
+    // while (this.gameBoard.length < 81){
+    //   for (var i = 0; i <= 8 ; i++ ){
+    //       this.arrayToCheck.push(Math.floor((Math.random() * 9) + 1));
+    //   }
+    //   if (this.arrayCheck()){
+    //     for (let i = 0; i < this.arrayToCheck.length; i++ )
+    //     {
+    //       this.gameBoard.push(this.arrayToCheck[i]);
+    //     }
+    //   }
+    // }
+    
+  }
+
 
 };
-export function makeGame() {
-  while (true){
-    var array = []
-    for (var i = 0; i <= 80 ; i++ ){
-        array.push(Math.floor((Math.random() * 9) + 1));
-        console.log(array);
-    }
-      var newGame = new Game(array);
-      if (newGame.solution()){
-      return array
-      }
-    }
-  }
+// export function makeGame() {
+//   while (true){
+//     var array = []
+//     for (var i = 0; i <= 80 ; i++ ){
+//         array.push(Math.floor((Math.random() * 9) + 1));
+//         console.log(array);
+//     }
+//       var newGame = new Game(array);
+//       if (newGame.solution()){
+//       return array
+//       }
+//     }
+//   }
 
   // export function makeGameTwo() {
   //   while (true){

@@ -2,6 +2,7 @@ import {Game} from '../src/game';
 
 describe ('Game', function() {
   let winningGame;
+  let testNewGame = new Game();
   beforeEach(function() {
     const winningSolution = [4,2,6,5,7,1,3,9,8,
                             8,5,7,2,9,3,1,4,6,
@@ -23,27 +24,26 @@ describe ('Game', function() {
     expect(rowResult).toEqual(true);
   });
 
-  it ('should cycle through each row until it finds a failing row', function() {
+  it ('should cycle through each row until it finds a failing combo of numbers', function() {
     var thisArray = winningGame.getAllRows();
     expect (thisArray).toEqual(true);
 
   });
 
-  it ('should cycle through each column until it finds a failing row', function() {
+  it ('should cycle through each column until it finds a failing combo of numbers ', function() {
     var thisArray = winningGame.getAllColumns();
     expect (thisArray).toEqual(true);
 
   });
 
-  it ('should cycle through each box until it finds a failing row', function() {
+  it ('should cycle through each box until it finds a failing combo of numbers', function() {
     var thisArray = winningGame.getAllBoxes();
     expect (thisArray).toEqual(true);
 
   });
-  it ('should create an array using 1-9 with no duplicates', function() {
-    // var thisArray = winningGame.getAllBoxes();
-    // expect (thisArray).toEqual(true);
-
+  it ('should create an array of 81 numbers, with no duplicats for every 9 numbers', function() {
+    expect (testNewGame.makeGameBoard().length).toEqual(81);
+    expect (testNewGame.getAllRows()).toEqual(true);
   });
 
 });
