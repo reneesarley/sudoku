@@ -10,7 +10,7 @@ export class Game {
     {
       return alert('missed something!');
     }
-    else if (this.getAllRows(solutionToCheck) && this.checkAllColumns(solutionToCheck) && this.getAllBoxes())
+    else if (this.getAllRows(solutionToCheck) && this.checkAllColumns(solutionToCheck) && this.getAllBoxes(solutionToCheck))
     {
       return alert("darn, you're smart");
     }
@@ -73,19 +73,19 @@ export class Game {
     return true;
   };
 
-  getAllBoxes() {
+  getAllBoxes(solutionToCheck) {
     for (var i = 0; i < 62; i+=3){
       if (i == 0 || i == 3 || i == 6 || i == 27 || i == 30 || i == 33 || i == 54 || i == 57 || i == 60){
         this.arrayToCheck = [];
-        this.arrayToCheck.push(this.usersSolution[i]);
-        this.arrayToCheck.push(this.usersSolution[i+1]);
-        this.arrayToCheck.push(this.usersSolution[i+2]);
-        this.arrayToCheck.push(this.usersSolution[i+9]);
-        this.arrayToCheck.push(this.usersSolution[i+10]);
-        this.arrayToCheck.push(this.usersSolution[i+11]);
-        this.arrayToCheck.push(this.usersSolution[i+18]);
-        this.arrayToCheck.push(this.usersSolution[i+19]);
-        this.arrayToCheck.push(this.usersSolution[i+20]);
+        this.arrayToCheck.push(solutionToCheck[i]);
+        this.arrayToCheck.push(solutionToCheck[i+1]);
+        this.arrayToCheck.push(solutionToCheck[i+2]);
+        this.arrayToCheck.push(solutionToCheck[i+9]);
+        this.arrayToCheck.push(solutionToCheck[i+10]);
+        this.arrayToCheck.push(solutionToCheck[i+11]);
+        this.arrayToCheck.push(solutionToCheck[i+18]);
+        this.arrayToCheck.push(solutionToCheck[i+19]);
+        this.arrayToCheck.push(solutionToCheck[i+20]);
         if (this.arrayCheck() == false){
           return false;
         }
