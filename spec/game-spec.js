@@ -51,11 +51,11 @@ describe ('Game', function() {
     expect(passingArray.arrayCheck()).toEqual(true);
   });
 
-  it ('should cycle through each row until it finds a failing combo of numbers', function() {
-    var result = winningGame.getAllRows(winningGame.usersSolution);
-    expect (result).toEqual(true);
-
-  });
+  // it ('should cycle through each row until it finds a failing combo of numbers', function() {
+  //   var result = winningGame.getAllRows(winningGame.usersSolution);
+  //   expect (result).toEqual(true);
+  //
+  // });
 
   it ('should cycle through each column until it finds a failing combo of numbers ', function() {
     var result = winningGame.checkAllColumns(winningGame.usersSolution);
@@ -75,9 +75,10 @@ describe ('Game', function() {
   });
   it ('should create an array of 81 numbers, with no duplicates for every row or column', function() {
     testNewGame.makeGameBoard();
+
     expect (testNewGame.gameBoard.length).toEqual(81);
     expect (testNewGame.getAllRows(testNewGame.gameBoard)).toEqual(true);
-    // expect (testNewGame.checkAllColumns(testNewGame.gameBoard)).toEqual(true);
+    expect (testNewGame.checkAllColumns(testNewGame.gameBoard)).toEqual(true);
   });
 
 

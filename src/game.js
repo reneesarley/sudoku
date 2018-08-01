@@ -51,6 +51,7 @@ export class Game {
       this.arrayToCheck.push(solutionToCheck[i+7]);
       this.arrayToCheck.push(solutionToCheck[i+8]);
       if (this.arrayCheck() == false){
+        console.log(`the ${i} row failed with these numbers ${this.arrayToCheck}`);
         return false;
       }
     }
@@ -94,30 +95,35 @@ export class Game {
   }
 
   makeGameBoard() {
-    while (this.gameBoard.length < 81){
+    let counter = 0;
+    this.gameBoard = [];
+    while (counter < 81){
       this.arrayToCheck =[];
       let options =[1, 2, 3, 4, 5, 6, 7, 8, 9]
       for (let i = 0; i <= 8 ; i++ ){
         let randomIndex = (Math.floor((Math.random() * options.length -1) + 1));
         this.arrayToCheck.push(options[randomIndex]);
         options.splice(randomIndex, 1);
-        console.log(`this is the options array after splice ${options}`);
       }
-      console.log(`this is the array that was created with new loop ${this.arrayToCheck}`);
+      console.log(`this is the array that will be checked ${this.arrayToCheck}`);
       for (let i = 0; i < this.arrayToCheck.length; i++ )
       {
         this.gameBoard.push(this.arrayToCheck[i]);
       }
-      console.log(`this is the array that was pushed to the gameboard ${this.arrayToCheck}`);
+      console.log(`Gameboard BEFORE backtracing: ${this.gameBoard}`)
+      let updatedGameBoardFailsColumnCheck = this.checkAllColumns(this.gameBoard)
+      console.log(`column ${this.arrayToCheck} was ${updatedGameBoardFailsColumnCheck}`);
+      //backtrack last added array if gameboard isn't winnings
+      if(!(updatedGameBoardFailsColumnCheck))
+      {
+        console.log(`this is the length of the gameboard before backtracking ${this.gameBoard.length}`);
+        this.gameBoard.splice((this.gameBoard.length-9), 9);
+        console.log(`this is the length of the gameboard AFTER backtracking ${this.gameBoard.length}`);
+        console.log(`Gameboard after backtracing: ${this.gameBoard}`)
 
-      // let updatedGameBoardFailsColumnCheck = this.checkAllColumns(this.gameBoard)
-      // console.log(`current result of gameboard column check ${updatedGameBoardFailsColumnCheck}`);
-
-      //backtrack last added array if gameboard isn't winning
-      // if(!(updatedGameBoardFailsColumnCheck))
-      // {
-      //   this.gameBoard.splice((this.gameBoard.length-10), 9);
-      // }
+      } else {
+        counter = this.gameBoard.length
+      }
     }
     console.log(`this is the gameboard that was created ${this.gameBoard}`);
   }
@@ -155,3 +161,13 @@ export class Game {
   //     }
   //   }
   //
+
+// 7,1,5,6,8,2,4,3,9,
+// 9,2,6,3,5,8,7,4,1,
+// 1,2,4,3,5,8,6,7,9,
+// 6,1,3,9,5,7,2,4,8,
+// 2,8,4,7,5,9,3,6,1,
+// 5,9,2,4,7,6,8,1,3,
+// 8,9,6,4,2,3,7,5,1,
+// 3,6,2,8,4,9,7,5,1,
+// 4,9,3,6,5,1,2,8,7
