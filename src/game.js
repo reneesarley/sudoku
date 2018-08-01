@@ -16,9 +16,8 @@ export class Game {
     }
   };
 
-
   arrayCheck() {
-    for (var r = 1; r < 9 ; r++){
+    for (var r = 1; r < 10 ; r++){
       if (!(this.arrayToCheck.includes(r)))
       {
         return false;
@@ -89,18 +88,20 @@ export class Game {
   }
 
   makeGameBoard() {
-    // while (this.gameBoard.length < 81){
-    //   for (var i = 0; i <= 8 ; i++ ){
-    //       this.arrayToCheck.push(Math.floor((Math.random() * 9) + 1));
-    //   }
-    //   if (this.arrayCheck()){
-    //     for (let i = 0; i < this.arrayToCheck.length; i++ )
-    //     {
-    //       this.gameBoard.push(this.arrayToCheck[i]);
-    //     }
-    //   }
-    // }
-    
+    while (this.gameBoard.length < 81){
+      this.arrayToCheck =[];
+      for (let i = 0; i <= 8 ; i++ ){
+          this.arrayToCheck.push(Math.floor((Math.random() * 9) + 1));
+      }
+      if (this.arrayCheck()){
+        console.log(`this passed into the true of the if ${this.arrayToCheck}`);
+        for (let i = 0; i < this.arrayToCheck.length; i++ )
+        {
+          this.gameBoard.push(this.arrayToCheck[i]);
+        }
+        console.log(`in the true of if after array to pushed to gameboard: ${this.gameBoard}`);
+      }
+    }
   }
 
 
