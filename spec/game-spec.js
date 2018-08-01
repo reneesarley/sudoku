@@ -5,17 +5,25 @@ describe ('Game', function() {
   let incompleteGameBoard;
   let testNewGame = new Game();
   beforeEach(function() {
-    const winningSolution = [4,2,6,5,7,1,3,9,8,
-                            8,5,7,2,9,3,1,4,6,
-                            1,3,9,4,6,8,2,7,5,
-                            9,7,1,3,8,5,6,2,4,
-                            5,4,3,7,2,6,8,1,9,
-                            6,8,2,1,4,9,7,5,3,
-                            7,9,4,6,3,2,5,8,1,
-                            2,6,5,8,1,4,9,3,7,
-                            3,1,8,9,5,7,4,6,2]
+    // const winningSolution = [4,2,6,5,7,1,3,9,8,
+    //                         8,5,7,2,9,3,1,4,6,
+    //                         1,3,9,4,6,8,2,7,5,
+    //                         9,7,1,3,8,5,6,2,4,
+    //                         5,4,3,7,2,6,8,1,9,
+    //                         6,8,2,1,4,9,7,5,3,
+    //                         7,9,4,6,3,2,5,8,1,
+    //                         2,6,5,8,1,4,9,3,7,
+    //                         3,1,8,9,5,7,4,6,2]
      winningGame = new Game();
-     winningGame.usersSolution = winningSolution;
+     winningGame.usersSolution = [4,2,6,5,7,1,3,9,8,
+                                 8,5,7,2,9,3,1,4,6,
+                                 1,3,9,4,6,8,2,7,5,
+                                 9,7,1,3,8,5,6,2,4,
+                                 5,4,3,7,2,6,8,1,9,
+                                 6,8,2,1,4,9,7,5,3,
+                                 7,9,4,6,3,2,5,8,1,
+                                 2,6,5,8,1,4,9,3,7,
+                                 3,1,8,9,5,7,4,6,2]
      winningGame.arrayToCheck = [1, 2, 3, 4, 5, 6, 7, 8, 9];
 
      incompleteGameBoard = new Game();
@@ -55,11 +63,11 @@ describe ('Game', function() {
 
   });
 
-  // it ('should cycle through each column until it finds a failing combo of numbers, even if array is less than 81', function() {
-  //   console.log(`the length of this solution is ${incompleteGameBoard.gameBoard.length}`);
-  //   var result = incompleteGameBoard.checkAllColumns(incompleteGameBoard.gameBoard);
-  //   expect (result).toEqual(true);
-  // });
+  it ('should cycle through each column until it finds a failing combo of numbers, even if gameboard/solution isnt complete', function() {
+    console.log(`the length of this solution is ${incompleteGameBoard.gameBoard.length}`);
+    var result = incompleteGameBoard.checkAllColumns(incompleteGameBoard.gameBoard);
+    expect (result).toEqual(true);
+  });
 
   it ('should cycle through each box until it finds a failing combo of numbers', function() {
     var thisArray = winningGame.getAllBoxes();

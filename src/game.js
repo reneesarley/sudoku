@@ -17,7 +17,6 @@ export class Game {
   };
 
   arrayCheck() {
-    //first check if array is length of 9
     if(this.arrayToCheck.length == 9){
       for (var r = 1; r < 10 ; r++){
         if (!(this.arrayToCheck.includes(r)))
@@ -28,7 +27,7 @@ export class Game {
     }
     else {
       for (var n = 1; n < 10 ; n++){
-        let numberOfTimesNumberAppearsInArray= this.arrayToCheck.filter(number => number == n).length
+        let numberOfTimesNumberAppearsInArray = this.arrayToCheck.filter(number => number == n).length
         if (numberOfTimesNumberAppearsInArray > 1)
         {
           return false;
@@ -60,19 +59,25 @@ export class Game {
   };
 
   checkAllColumns(solutionToCheck) {
-    console.log(`the loop should run up until it hits ${solutionToCheck.length/9}`);
-    for (var i = 0; i < (solutionToCheck.length/9); i++){
+    console.log(`this is the solution that is being checked ${solutionToCheck}`);
+    for (var i = 0; i < 9; i++){
       this.arrayToCheck = [];
-      this.arrayToCheck.push(solutionToCheck[i]);
-      this.arrayToCheck.push(solutionToCheck[i+9]);
-      this.arrayToCheck.push(solutionToCheck[i+18]);
-      this.arrayToCheck.push(solutionToCheck[i+27]);
-      this.arrayToCheck.push(solutionToCheck[i+36]);
-      this.arrayToCheck.push(solutionToCheck[i+45]);
-      this.arrayToCheck.push(solutionToCheck[i+54]);
-      this.arrayToCheck.push(solutionToCheck[i+63]);
-      this.arrayToCheck.push(solutionToCheck[i+72]);
+      //find length of total gameboard stop a
+      console.log(`the length of the solution being checked is ${solutionToCheck.length}`);
+      for (let n = 0; n <= solutionToCheck.length - 9; n+=9)
+      {
+        this.arrayToCheck.push(solutionToCheck[n]);
+        // this.arrayToCheck.push(solutionToCheck[i+9]);
+        // this.arrayToCheck.push(solutionToCheck[i+18]);
+        // this.arrayToCheck.push(solutionToCheck[i+27]);
+        // this.arrayToCheck.push(solutionToCheck[i+36]);
+        // this.arrayToCheck.push(solutionToCheck[i+45]);
+        // this.arrayToCheck.push(solutionToCheck[i+54]);
+        // this.arrayToCheck.push(solutionToCheck[i+63]);
+        // this.arrayToCheck.push(solutionToCheck[i+72]);
+      }
       if (this.arrayCheck() == false){
+        console.log(`this is the array that failed ${this.arrayToCheck}`);
         return false;
       }
     }
