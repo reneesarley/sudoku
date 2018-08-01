@@ -15,11 +15,9 @@ $(document).ready(function() {
       var td_value = $(this).val();
       gameArray.push(parseInt(td_value));
     });
-    var  newGame = new Game(gameArray);
-    newGame.solution();
-
-    console.log(gameArray);
-
+    var  newGame = new Game();
+    newGame.usersSolution = gameArray
+    newGame.solution(this.usersSolution);
   });
 
     $('#new-game').click(function(event) {

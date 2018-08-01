@@ -5,12 +5,12 @@ export class Game {
     this.gameBoard = [];
   }
 
-  solution() {
+  solution(solutionToCheck) {
     if (this.usersSolution.includes(NaN))
     {
       return alert('missed something!');
     }
-    else if (this.getAllRows() && this.getAllColumns() && this.getAllBoxes())
+    else if (this.getAllRows(solutionToCheck) && this.getAllColumns() && this.getAllBoxes())
     {
       return alert("darn, you're smart");
     }
@@ -27,18 +27,18 @@ export class Game {
   };
 
 
-    getAllRows() {
-    for (var i = 0; i <= this.usersSolution.length - 9; i+=9){
+    getAllRows(solutionToCheck) {
+    for (var i = 0; i <= solutionToCheck.length - 9; i+=9){
       this.arrayToCheck = [];
-      this.arrayToCheck.push(this.usersSolution[i]);
-      this.arrayToCheck.push(this.usersSolution[i+1]);
-      this.arrayToCheck.push(this.usersSolution[i+2]);
-      this.arrayToCheck.push(this.usersSolution[i+3]);
-      this.arrayToCheck.push(this.usersSolution[i+4]);
-      this.arrayToCheck.push(this.usersSolution[i+5]);
-      this.arrayToCheck.push(this.usersSolution[i+6]);
-      this.arrayToCheck.push(this.usersSolution[i+7]);
-      this.arrayToCheck.push(this.usersSolution[i+8]);
+      this.arrayToCheck.push(solutionToCheck[i]);
+      this.arrayToCheck.push(solutionToCheck[i+1]);
+      this.arrayToCheck.push(solutionToCheck[i+2]);
+      this.arrayToCheck.push(solutionToCheck[i+3]);
+      this.arrayToCheck.push(solutionToCheck[i+4]);
+      this.arrayToCheck.push(solutionToCheck[i+5]);
+      this.arrayToCheck.push(solutionToCheck[i+6]);
+      this.arrayToCheck.push(solutionToCheck[i+7]);
+      this.arrayToCheck.push(solutionToCheck[i+8]);
       if (this.arrayCheck() == false){
         return false;
       }
@@ -93,18 +93,15 @@ export class Game {
       for (let i = 0; i <= 8 ; i++ ){
           this.arrayToCheck.push(Math.floor((Math.random() * 9) + 1));
       }
-      if (this.arrayCheck()){
-        console.log(`this passed into the true of the if ${this.arrayToCheck}`);
+      let arrayContainsAllNumbers = this.arrayCheck();
+      if (arrayContainsAllNumbers){
         for (let i = 0; i < this.arrayToCheck.length; i++ )
         {
           this.gameBoard.push(this.arrayToCheck[i]);
         }
-        console.log(`in the true of if after array to pushed to gameboard: ${this.gameBoard}`);
       }
     }
   }
-
-
 };
 // export function makeGame() {
 //   while (true){

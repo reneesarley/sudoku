@@ -25,8 +25,8 @@ describe ('Game', function() {
   });
 
   it ('should cycle through each row until it finds a failing combo of numbers', function() {
-    var thisArray = winningGame.getAllRows();
-    expect (thisArray).toEqual(true);
+    var result = winningGame.getAllRows(winningGame.usersSolution);
+    expect (result).toEqual(true);
 
   });
 
@@ -42,8 +42,10 @@ describe ('Game', function() {
 
   });
   it ('should create an array of 81 numbers, with no duplicats for every 9 numbers', function() {
-    expect (testNewGame.makeGameBoard().length).toEqual(81);
-    expect (testNewGame.getAllRows()).toEqual(true);
+    testNewGame.makeGameBoard();
+    console.log(`this is the gameboard that is being tested ${testNewGame.gameBoard}`);
+    expect (testNewGame.gameBoard.length).toEqual(81);
+    expect (testNewGame.getAllRows(testNewGame.gameBoard)).toEqual(true);
   });
 
 });
