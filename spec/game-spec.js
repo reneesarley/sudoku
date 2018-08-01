@@ -64,7 +64,6 @@ describe ('Game', function() {
   });
 
   it ('should cycle through each column until it finds a failing combo of numbers, even if gameboard/solution isnt complete', function() {
-    console.log(`the length of this solution is ${incompleteGameBoard.gameBoard.length}`);
     var result = incompleteGameBoard.checkAllColumns(incompleteGameBoard.gameBoard);
     expect (result).toEqual(true);
   });

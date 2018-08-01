@@ -59,25 +59,13 @@ export class Game {
   };
 
   checkAllColumns(solutionToCheck) {
-    console.log(`this is the solution that is being checked ${solutionToCheck}`);
-    for (var i = 0; i < 9; i++){
+    for (let i = 0; i < 9; i++){
       this.arrayToCheck = [];
-      //find length of total gameboard stop a
-      console.log(`the length of the solution being checked is ${solutionToCheck.length}`);
       for (let n = 0; n <= solutionToCheck.length - 9; n+=9)
       {
         this.arrayToCheck.push(solutionToCheck[n]);
-        // this.arrayToCheck.push(solutionToCheck[i+9]);
-        // this.arrayToCheck.push(solutionToCheck[i+18]);
-        // this.arrayToCheck.push(solutionToCheck[i+27]);
-        // this.arrayToCheck.push(solutionToCheck[i+36]);
-        // this.arrayToCheck.push(solutionToCheck[i+45]);
-        // this.arrayToCheck.push(solutionToCheck[i+54]);
-        // this.arrayToCheck.push(solutionToCheck[i+63]);
-        // this.arrayToCheck.push(solutionToCheck[i+72]);
       }
       if (this.arrayCheck() == false){
-        console.log(`this is the array that failed ${this.arrayToCheck}`);
         return false;
       }
     }
@@ -108,16 +96,20 @@ export class Game {
   makeGameBoard() {
     while (this.gameBoard.length < 81){
       this.arrayToCheck =[];
+      let options =[1, 2, 3, 4, 5, 6, 7, 8, 9]
       for (let i = 0; i <= 8 ; i++ ){
-          this.arrayToCheck.push(Math.floor((Math.random() * 9) + 1));
+        let randomIndex = (Math.floor((Math.random() * options.length -1) + 1));
+        this.arrayToCheck.push(options[randomIndex]);
+        options.splice(randomIndex, 1);
+        console.log(`this is the options array after splice ${options}`);
       }
-      let arrayContainsAllNumbers = this.arrayCheck();
-      if (arrayContainsAllNumbers){
-        for (let i = 0; i < this.arrayToCheck.length; i++ )
-        {
-          this.gameBoard.push(this.arrayToCheck[i]);
-        }
+      console.log(`this is the array that was created with new loop ${this.arrayToCheck}`);
+      for (let i = 0; i < this.arrayToCheck.length; i++ )
+      {
+        this.gameBoard.push(this.arrayToCheck[i]);
       }
+      console.log(`this is the array that was pushed to the gameboard ${this.arrayToCheck}`);
+
       // let updatedGameBoardFailsColumnCheck = this.checkAllColumns(this.gameBoard)
       // console.log(`current result of gameboard column check ${updatedGameBoardFailsColumnCheck}`);
 
@@ -127,6 +119,7 @@ export class Game {
       //   this.gameBoard.splice((this.gameBoard.length-10), 9);
       // }
     }
+    console.log(`this is the gameboard that was created ${this.gameBoard}`);
   }
 };
 // export function makeGame() {
