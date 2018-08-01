@@ -1,11 +1,11 @@
 import {Game} from '../src/game';
 
 describe ('Game', function() {
-  var newArray;
+  var winningGame;
 
   beforeEach(function() {
 
-    newArray = new Game(
+    winningGame = new Game(
 
       [4,2,6,5,7,1,3,9,8,
         8,5,7,2,9,3,1,4,6,
@@ -17,28 +17,28 @@ describe ('Game', function() {
         2,6,5,8,1,4,9,3,7,
         3,1,8,9,5,7,4,6,2]);
 
-    newArray.arrayToCheck = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+    winningGame.arrayToCheck = [1, 2, 3, 4, 5, 6, 7, 8, 9];
   });
 
-  it ('should test row contains correct numbers', function() {
-    var rowResult = newArray.arrayCheck();
+  it ('should test if set of 9 numbers contains correct numbers', function() {
+    var rowResult = winningGame.arrayCheck();
     expect(rowResult).toEqual(true);
   });
 
   it ('should push all rows to array to check', function() {
-    var thisArray = newArray.getAllRows();
+    var thisArray = winningGame.getAllRows();
     expect (thisArray).toEqual(true);
 
   });
 
   it ('should push all cols to array to check', function() {
-    var thisArray = newArray.getAllColumns();
+    var thisArray = winningGame.getAllColumns();
     expect (thisArray).toEqual(true);
 
   });
 
   it ('should push all boxes to array to check', function() {
-    var thisArray = newArray.getAllBoxes();
+    var thisArray = winningGame.getAllBoxes();
     expect (thisArray).toEqual(true);
 
   });
