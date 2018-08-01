@@ -31,8 +31,8 @@ describe ('Game', function() {
   });
 
   it ('should cycle through each column until it finds a failing combo of numbers ', function() {
-    var thisArray = winningGame.getAllColumns();
-    expect (thisArray).toEqual(true);
+    var result = winningGame.getAllColumns(winningGame.usersSolution);
+    expect (result).toEqual(true);
 
   });
 
