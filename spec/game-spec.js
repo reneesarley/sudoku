@@ -95,14 +95,13 @@ describe ('Game', function() {
     let result = winningGame.solution(winningGame.usersSolution);
     expect(result).toEqual(true);
   });
+
   it ('should create an array of 81 numbers, with no duplicates in every row and column', function() {
     testNewGame.makeGameBoard();
-    expect (testNewGame.gameBoard.length).toEqual(81);
-    expect (testNewGame.getAllRows(testNewGame.gameBoard)).toEqual(true);
-    // expect (testNewGame.checkAllColumns(testNewGame.gameBoard)).toEqual(true);
-  //   expect (testNewGame.getAllBoxes(testNewGame.gameBoard)).toEqual(true);
+    // expect (testNewGame.gameBoard.length).toEqual(81);
+    expect (testNewGame.solution(testNewGame.gameBoard)).toEqual(true);
   });
 
-
+//
 
 });
