@@ -93,11 +93,17 @@ describe ('Game', function() {
     expect (resultFail).toEqual(false);
   });
 
+  // it ('should test array to see if all rows, columns and boxes are 1-9 with no duplicates', function(){
+  //   let result = winningGame.solution(winningGame.usersSolution);
+  //   expect(result).toEqual(true);
+  //
+  // });
   it ('should create an array of 81 numbers, with no duplicates in every row and column', function() {
     testNewGame.makeGameBoard();
     expect (testNewGame.gameBoard.length).toEqual(81);
     expect (testNewGame.getAllRows(testNewGame.gameBoard)).toEqual(true);
     expect (testNewGame.checkAllColumns(testNewGame.gameBoard)).toEqual(true);
+    expect (testNewGame.getAllBoxes(testNewGame.gameBoard)).toEqual(true);
   });
 
 

@@ -8,11 +8,11 @@ export class Game {
   solution(solutionToCheck) {
     if (this.usersSolution.includes(NaN))
     {
-      return alert('missed something!');
+      return false;
     }
     else if (this.getAllRows(solutionToCheck) && this.checkAllColumns(solutionToCheck) && this.getAllBoxes(solutionToCheck))
     {
-      return alert("darn, you're smart");
+      return true;
     }
   };
 
@@ -104,36 +104,19 @@ export class Game {
         this.arrayToCheck.push(options[randomIndex]);
         options.splice(randomIndex, 1);
       }
-      console.log(`this is the array that will be checked ${this.arrayToCheck}`);
       for (let i = 0; i < this.arrayToCheck.length; i++ )
       {
         this.gameBoard.push(this.arrayToCheck[i]);
       }
-      console.log(`Gameboard BEFORE backtracing: ${this.gameBoard}`)
       let updatedGameBoardFailsColumnCheck = this.checkAllColumns(this.gameBoard)
       let updatedGameBoardFailsBoxCheck = this.getAllBoxes(this.gameBoard)
-      //backtrack last added array if gameboard isn't winning
       if(!(updatedGameBoardFailsColumnCheck) || !(updatedGameBoardFailsBoxCheck))
       {
-        console.log(`this is the length of the gameboard before backtracking ${this.gameBoard.length}`);
         this.gameBoard.splice((this.gameBoard.length-9), 9);
-        // console.log(`this is the length of the gameboard AFTER backtracking ${this.gameBoard.length}`);
-        // console.log(`Gameboard after backtracing: ${this.gameBoard}`)
 
       } else {
         counter = this.gameBoard.length
       }
     }
-    // console.log(`this is the gameboard that was created ${this.gameBoard}`);
   }
 };
-
-// 3,4,2,8,1,6,5,9,7,
-// 5,4,1,6,9,2,7,8,3,
-// 6,8,3,2,7,4,9,5,1,
-// 8,7,4,2,6,5,3,9,1,
-// 9,8,7,6,4,1,5,2,3,
-// 2,7,8,1,5,6,9,3,4,
-// 1,2,9,7,5,8,3,4,6,
-// 7,6,9,8,3,1,5,2,4,
-// 4,6,1,8,3,2,5,7,9
