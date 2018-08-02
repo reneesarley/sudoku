@@ -82,11 +82,9 @@ export class Game {
         for (let j = 0; j <= indexesInBox.length; j++)
         {
           let currentIndex = indexesInBox[j]
-          console.log(`the current starting index being used is ${i}`);
           if(!(solutionToCheck[i+currentIndex] == null))
           this.arrayToCheck.push(solutionToCheck[i+currentIndex]);
         }
-        console.log(`current array to check is ${this.arrayToCheck}`);
         if (this.arrayCheck() == false){
           return false;
         }
@@ -113,9 +111,9 @@ export class Game {
       }
       console.log(`Gameboard BEFORE backtracing: ${this.gameBoard}`)
       let updatedGameBoardFailsColumnCheck = this.checkAllColumns(this.gameBoard)
-      console.log(`column ${this.arrayToCheck} was ${updatedGameBoardFailsColumnCheck}`);
-      //backtrack last added array if gameboard isn't winnings
-      if(!(updatedGameBoardFailsColumnCheck))
+      let updatedGameBoardFailsBoxCheck = this.getAllBoxes(this.gameBoard)
+      //backtrack last added array if gameboard isn't winning
+      if(!(updatedGameBoardFailsColumnCheck) || !(updatedGameBoardFailsBoxCheck))
       {
         console.log(`this is the length of the gameboard before backtracking ${this.gameBoard.length}`);
         this.gameBoard.splice((this.gameBoard.length-9), 9);
@@ -129,3 +127,13 @@ export class Game {
     // console.log(`this is the gameboard that was created ${this.gameBoard}`);
   }
 };
+
+// 3,4,2,8,1,6,5,9,7,
+// 5,4,1,6,9,2,7,8,3,
+// 6,8,3,2,7,4,9,5,1,
+// 8,7,4,2,6,5,3,9,1,
+// 9,8,7,6,4,1,5,2,3,
+// 2,7,8,1,5,6,9,3,4,
+// 1,2,9,7,5,8,3,4,6,
+// 7,6,9,8,3,1,5,2,4,
+// 4,6,1,8,3,2,5,7,9
