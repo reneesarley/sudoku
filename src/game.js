@@ -17,24 +17,14 @@ export class Game {
   };
 
   arrayCheck() {
-    if(this.arrayToCheck.length == 9){
-      for (var r = 1; r < 10 ; r++){
-        if (!(this.arrayToCheck.includes(r)))
-        {
-          return false;
-        }
+    for (var n = 1; n < 10 ; n++){
+      let numberOfTimesNumberAppearsInArray = this.arrayToCheck.filter(number => number == n).length
+      if (numberOfTimesNumberAppearsInArray > 1)
+      {
+        return false;
       }
     }
-    else {
-      for (var n = 1; n < 10 ; n++){
-        let numberOfTimesNumberAppearsInArray = this.arrayToCheck.filter(number => number == n).length
-        if (numberOfTimesNumberAppearsInArray > 1)
-        {
-          return false;
-        }
-      }
-    }
-    return true;
+  return true;
   };
 
 
@@ -60,20 +50,14 @@ export class Game {
   };
 
   checkAllColumns(solutionToCheck) {
-    console.log(`this is the solution that is being checked ${solutionToCheck}`);
     for (let i = 0; i < 9; i++){
       this.arrayToCheck = [];
-      console.log(`the current i value is ${i}`);
       for (let n = 0; n <= solutionToCheck.length - 9; n+=9)
       {
         if(!(this.arrayToCheck.indexOf(solutionToCheck[n + i])=== -1)){
-          console.log(`the current index value is ${n + i}`)
-          console.log(`the failing index is ${solutionToCheck[n]}`);
           return false;
         }
-          console.log(`the current index value is ${n + i}`)
           this.arrayToCheck.push(solutionToCheck[n + i]);
-          console.log(`the current array is ${this.arrayToCheck}`);
       }
     }
     return true;
