@@ -74,18 +74,19 @@ export class Game {
   };
 
   getAllBoxes(solutionToCheck) {
-    for (var i = 0; i < 62; i+=3){
-      if (i == 0 || i == 3 || i == 6 || i == 27 || i == 30 || i == 33 || i == 54 || i == 57 || i == 60){
+    let indexesInBox = [0, 1, 2, 9, 10, 11, 18, 19, 20]
+    let boxStartingIndexes = [0, 3, 6, 27, 30, 33, 54, 57, 60]
+    for (var i = 0; i <= solutionToCheck.length; i+=3){
+      if (boxStartingIndexes.includes(i)){
         this.arrayToCheck = [];
-        this.arrayToCheck.push(solutionToCheck[i]);
-        this.arrayToCheck.push(solutionToCheck[i+1]);
-        this.arrayToCheck.push(solutionToCheck[i+2]);
-        this.arrayToCheck.push(solutionToCheck[i+9]);
-        this.arrayToCheck.push(solutionToCheck[i+10]);
-        this.arrayToCheck.push(solutionToCheck[i+11]);
-        this.arrayToCheck.push(solutionToCheck[i+18]);
-        this.arrayToCheck.push(solutionToCheck[i+19]);
-        this.arrayToCheck.push(solutionToCheck[i+20]);
+        for (let j = 0; j <= indexesInBox.length; j++)
+        {
+          let currentIndex = indexesInBox[j]
+          console.log(`the current starting index being used is ${i}`);
+          if(!(solutionToCheck[i+currentIndex] == null))
+          this.arrayToCheck.push(solutionToCheck[i+currentIndex]);
+        }
+        console.log(`current array to check is ${this.arrayToCheck}`);
         if (this.arrayCheck() == false){
           return false;
         }
@@ -118,56 +119,13 @@ export class Game {
       {
         console.log(`this is the length of the gameboard before backtracking ${this.gameBoard.length}`);
         this.gameBoard.splice((this.gameBoard.length-9), 9);
-        console.log(`this is the length of the gameboard AFTER backtracking ${this.gameBoard.length}`);
-        console.log(`Gameboard after backtracing: ${this.gameBoard}`)
+        // console.log(`this is the length of the gameboard AFTER backtracking ${this.gameBoard.length}`);
+        // console.log(`Gameboard after backtracing: ${this.gameBoard}`)
 
       } else {
         counter = this.gameBoard.length
       }
     }
-    console.log(`this is the gameboard that was created ${this.gameBoard}`);
+    // console.log(`this is the gameboard that was created ${this.gameBoard}`);
   }
 };
-// export function makeGame() {
-//   while (true){
-//     var array = []
-//     for (var i = 0; i <= 80 ; i++ ){
-//         array.push(Math.floor((Math.random() * 9) + 1));
-//         console.log(array);
-//     }
-//       var newGame = new Game(array);
-//       if (newGame.solution()){
-//       return array
-//       }
-//     }
-//   }
-
-  // export function makeGameTwo() {
-  //   while (true){
-  //     var array = []
-  //     for (var i = 0; i <= 8 ; i++ ){
-  //       var rowArray = []
-  //       var newNumber =(Math.floor((Math.random() * 9) + 1))
-  //       if(!(rowArray.inclueds(newNumber)))
-  //       {
-  //         rowArray.push(newNumber);
-  //       }
-  //         console.log(rowArray);
-  //     }
-  //       var newGame = new Game(array);
-  //       if (newGame.solution()){
-  //       return array
-  //       }
-  //     }
-  //   }
-  //
-
-// 7,1,5,6,8,2,4,3,9,
-// 9,2,6,3,5,8,7,4,1,
-// 1,2,4,3,5,8,6,7,9,
-// 6,1,3,9,5,7,2,4,8,
-// 2,8,4,7,5,9,3,6,1,
-// 5,9,2,4,7,6,8,1,3,
-// 8,9,6,4,2,3,7,5,1,
-// 3,6,2,8,4,9,7,5,1,
-// 4,9,3,6,5,1,2,8,7
