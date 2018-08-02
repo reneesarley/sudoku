@@ -79,7 +79,7 @@ export class Game {
           if(!(this.boxToCheck.indexOf(solutionToCheck[i+currentIndex])===-1))
           {
             console.log(`this is the box that failed ${this.boxToCheck} and the failing number is ${solutionToCheck[i+currentIndex]}`);
-            return false;ß
+            return false;
           }
           else if(!(solutionToCheck[i+currentIndex] == null) )
           this.boxToCheck.push(solutionToCheck[i+currentIndex]);
@@ -109,7 +109,12 @@ export class Game {
 
       if(!(this.getAllBoxes(this.gameBoard)))
       {
+        // remove potentialRow from gameBoard
         this.gameBoard.splice((this.gameBoard.length-9), 9);
+        //splice all numbers out of failing row starting with the failing numbers
+        //reset options to 1 - 9
+        //remove all numbers in potentialRow from options array
+        //rebuild missing part of potentialRow
 
       } else if(!(this.checkAllColumns(this.gameBoard))){
         this.boxToCheck
@@ -124,7 +129,15 @@ export class Game {
   }
 };
 
-
+// 9,7,3,6,4,2,8,1,5,
+// 4,6,2,8,5,1,3,7,9,
+// 1,8,5,7,9,3,2,6,4,
+// 5,9,8,1,2,7,4,3,6,
+// 6,1,7,3,8,4,5,9,2,
+// 3,2,4,5,6,9,1,8,7,
+// 8,4,6,9,1,5,7,2,3,
+// 2,3,9,4,7,8,6,5,1,
+// 7,5,1,2,3,6,9,4,8
 
 // 2,4,8,1,9,3,7,5,6,
 // 1,5,3,2,6,7,9,4,8,
