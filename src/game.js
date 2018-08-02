@@ -67,6 +67,7 @@ export class Game {
     let indexesInBox = [0, 1, 2, 9, 10, 11, 18, 19, 20]
     let boxStartingIndexes = [0, 3, 6, 27, 30, 33, 54, 57, 60]
     for (var i = 0; i <= solutionToCheck.length; i+=3){
+      //if this is a index that starts a box
       if (boxStartingIndexes.includes(i)){
         this.arrayToCheck = [];
         for (let j = 0; j <= indexesInBox.length; j++)
@@ -78,9 +79,6 @@ export class Game {
           }
           else if(!(solutionToCheck[i+currentIndex] == null) )
           this.arrayToCheck.push(solutionToCheck[i+currentIndex]);
-        }
-        if (this.arrayCheck() == false){
-          return false;
         }
       }
     }
@@ -101,18 +99,17 @@ export class Game {
       for (let i = 0; i < this.arrayToCheck.length; i++ )
       {
         this.gameBoard.push(this.arrayToCheck[i]);
-        console.log(`add potential row`);
       }
+      console.log(`add potential row`);
       if(!(this.checkAllColumns(this.gameBoard)))
       {
         this.gameBoard.splice((this.gameBoard.length-9), 9);
       }
-
       // } else if(!(this.getAllBoxes(this.gameBoard))){
       //
       //   this.gameBoard.splice((this.gameBoard.length-9), 9);
       // }
-      else {
+       else {
         counter += 1
       }
     }
